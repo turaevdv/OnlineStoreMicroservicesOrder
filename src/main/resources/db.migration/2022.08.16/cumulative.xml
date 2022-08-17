@@ -7,4 +7,5 @@
 
     <include file="db.migration/2022.08.16/create-orders-table.xml"/>
     <include file="db.migration/2022.08.16/create-goods_and_quantity-table.xml"/>
+    <include file="db.migration/2022.08.16/change-column-name.xml"/>
 </databaseChangeLog>

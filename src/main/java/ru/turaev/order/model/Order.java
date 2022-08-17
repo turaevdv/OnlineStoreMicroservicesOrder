@@ -1,7 +1,6 @@
 package ru.turaev.order.model;
 
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
@@ -12,8 +11,11 @@ import java.util.List;
 /**
  * Структура, описывающая заказ
  */
-@Data
+@Builder
+@Getter
+@Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "orders")
 public class Order {
@@ -24,7 +26,7 @@ public class Order {
     /** Список товаров, для каждого из которых указано количество единиц */
     @OneToMany(cascade = {CascadeType.PERSIST})
     @JoinColumn(name = "order_id", referencedColumnName = "id", nullable = false)
-    private List<GoodsAndQuantity> goodsAndQuantities;
+    private List<AccountingAndQuantity> accountingAndQuantities;
 
     @Column(name = "order_date", nullable = false)
     private LocalDate orderDate;
@@ -34,8 +36,8 @@ public class Order {
     private LocalTime orderTime;
 
     /** Id магазина, в котором была совершена покупка */
-    @Column(name = "shop_id", nullable = false)
-    private long shopId;
+    @Column(name = "pickup_point_id", nullable = false)
+    private long pickupPointId;
 
     @Column(name = "user_id", nullable = false)
     private long userId;

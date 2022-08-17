@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.8.xsd">
+
+    <changeSet id="2022-08-16-21-23" author="Turaev Denis">
+        <renameColumn tableName="orders" oldColumnName="shop_id" newColumnName="pickup_point_id"/>
+
+        <renameTable oldTableName="goods_and_quantity" newTableName="accounting_and_quantities"/>
+        <renameColumn tableName="accounting_and_quantities" oldColumnName="product_id" newColumnName="accounting_id"/>
+    </changeSet>
+</databaseChangeLog>

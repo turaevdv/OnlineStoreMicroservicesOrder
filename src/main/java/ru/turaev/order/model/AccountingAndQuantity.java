@@ -9,14 +9,14 @@ import javax.persistence.*;
  */
 @Data
 @Entity
-@Table(name = "goods_and_quantity")
-public class GoodsAndQuantity {
+@Table(name = "accounting_and_quantities")
+public class AccountingAndQuantity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long id;
 
-    @Column(name = "product_id", nullable = false)
-    private long productId;
+    @Column(name = "accounting_id", nullable = false)
+    private long accountingId;
 
     @Column(nullable = false)
     private int quantity;
