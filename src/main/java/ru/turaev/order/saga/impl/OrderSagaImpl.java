@@ -46,10 +46,10 @@ public class OrderSagaImpl implements OrderSaga {
         }
         log.info("User with id = {} can place an order", orderDto.getUserId());
 
-        int price = goodsRestConsumer.bookingGoods(orderDto.getAccountingAndQuantityDtos());
+        int price = goodsRestConsumer.bookingGoods(orderDto.getAccountingAndQuantities());
         log.info("The order is correct. Final price is {}", price);
 
-        List<AccountingAndQuantity> accountingAndQuantityList = orderDto.getAccountingAndQuantityDtos()
+        List<AccountingAndQuantity> accountingAndQuantityList = orderDto.getAccountingAndQuantities()
                 .stream()
                 .map(accountingAndQuantityMapper::fromDto)
                 .collect(Collectors.toList());
@@ -57,8 +57,8 @@ public class OrderSagaImpl implements OrderSaga {
         Order order = Order.builder()
                 .accountingAndQuantities(accountingAndQuantityList)
                 .price(price)
-                .orderDate(orderDto.getDate())
-                .orderTime(orderDto.getTime())
+                .orderDate(orderDto.getOrderDate())
+                .orderTime(orderDto.getOrderTime())
                 .pickupPointId(orderDto.getPickupPointId())
                 .userId(orderDto.getUserId())
                 .isCanceled(false)

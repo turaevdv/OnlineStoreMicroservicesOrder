@@ -10,13 +10,10 @@ import java.util.List;
 @Data
 public class OrderDto {
     private long userId;
-
     private long pickupPointId;
-
-    private List<AccountingAndQuantityDto> accountingAndQuantityDtos;
-
-    private LocalDate date;
-
+    private LocalDate orderDate;
     @DateTimeFormat(pattern = "kk:mm:ss")
-    private LocalTime time;
+    private LocalTime orderTime;
+    private List<AccountingAndQuantityDto> accountingAndQuantities;
+    private int price;
 }
